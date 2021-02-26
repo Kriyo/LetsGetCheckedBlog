@@ -1,8 +1,12 @@
 import React from 'react'
+
+import { useFetch } from '../hooks/useFetch'
 import { Feature } from '../components'
 import { NavContainer } from '../containers/navbar'
 
-export default function Home() {
+export const Home = () => {
+  useFetch('http://localhost:9000/posts')
+
   return (
     <>
       <NavContainer>

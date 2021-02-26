@@ -1,7 +1,7 @@
 import React from 'react'
 import { Background, Container, Link, Logo } from './styles/navbar'
 
-export default function NavBar({ background = true, children, ...props }) {
+export const NavBar = ({ background = true, children, ...props }) => {
   return background ? <Background {...props}>{children}</Background> : children
 }
 
