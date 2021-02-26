@@ -13,7 +13,7 @@ export const Background = styled.div`
     url('../images/blog-background.jpg') top left / cover no-repeat;
 `
 
-export const Container = styled.div`
+export const Container = styled.nav`
   display: flex;
   margin: 0 56px;
   height: 100px;
