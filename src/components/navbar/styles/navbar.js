@@ -27,7 +27,7 @@ export const Container = styled.nav`
   }
 `
 
-export const Link = styled.p`
+export const NavLink = styled.a`
   color: ${Neutral[100]};
   text-decoration: none;
   margin-right: 30px;

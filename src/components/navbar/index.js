@@ -1,5 +1,6 @@
 import React from 'react'
-import { Background, Container, Link, Logo } from './styles/navbar'
+import { Link as ReactRouterLink } from 'react-router-dom'
+import { Background, Container, NavLink, Logo } from './styles/navbar'
 
 export const NavBar = ({ background = true, children, ...props }) => {
   return background ? <Background {...props}>{children}</Background> : children
@@ -9,10 +10,18 @@ NavBar.Frame = function NavBarFrame({ children, ...props }) {
   return <Container {...props}>{children}</Container>
 }
 
-NavBar.Link = function NavBarLink({ children, ...props }) {
-  return <Link {...props}>{children}</Link>
+NavBar.Link = function NavBarLink({ to, children, ...props }) {
+  return (
+    <ReactRouterLink to={to}>
+      <NavLink {...props}>{children}</NavLink>
+    </ReactRouterLink>
+  )
 }
 
 NavBar.Logo = function NavBarLogo({ to, ...restProps }) {
-  return <Logo {...restProps} />
+  return (
+    <ReactRouterLink to={to}>
+      <Logo {...restProps} />
+    </ReactRouterLink>
+  )
 }
