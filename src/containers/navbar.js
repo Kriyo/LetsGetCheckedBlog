@@ -7,11 +7,23 @@ export const NavContainer = ({ children }) => {
   return (
     <NavBar>
       <NavBar.Frame>
-        <NavBar.Logo alt="Lets Get Checked Blog Logo" src={logo} />
-        <NavBar.Link to={ROUTES.HOME}>Home</NavBar.Link>
-        <NavBar.Link to={ROUTES.BLOG}>Blog</NavBar.Link>
-        <NavBar.Link to={ROUTES.CONTACT}>Contact</NavBar.Link>
-        <NavBar.Link to={ROUTES.ABOUT}>About</NavBar.Link>
+        <NavBar.Logo
+          to={ROUTES.HOME}
+          alt="Lets Get Checked Blog Logo"
+          src={logo}
+        />
+        <NavBar.Link alt="Go to Home page" to={ROUTES.HOME}>
+          Home
+        </NavBar.Link>
+        <NavBar.Link alt="Go to Blog page" to={ROUTES.BLOG}>
+          Blog
+        </NavBar.Link>
+        <NavBar.Link alt="Go to Contact page" to={ROUTES.CONTACT}>
+          Contact
+        </NavBar.Link>
+        <NavBar.Link alt="Go to About page" to={ROUTES.ABOUT}>
+          About
+        </NavBar.Link>
       </NavBar.Frame>
       {children}
     </NavBar>

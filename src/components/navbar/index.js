@@ -12,9 +12,9 @@ NavBar.Frame = function NavBarFrame({ children, ...props }) {
 
 NavBar.Link = function NavBarLink({ to, children, ...props }) {
   return (
-    <ReactRouterLink to={to}>
-      <NavLink {...props}>{children}</NavLink>
-    </ReactRouterLink>
+    <NavLink href={to} {...props}>
+      {children}
+    </NavLink>
   )
 }
 

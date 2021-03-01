@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { Home } from './pages'
+import { Blog, Home } from './pages'
 import * as ROUTES from './constants/routes'
 
 export const App = () => {
@@ -10,7 +10,7 @@ export const App = () => {
         <Home />
       </Route>
       <Route exact path={ROUTES.BLOG}>
-        <p>Blog page goes here</p>
+        <Blog />
       </Route>
       <Route exact path={ROUTES.ABOUT}>
         <p>About page goes here</p>

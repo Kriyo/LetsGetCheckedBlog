@@ -3,12 +3,10 @@ import React from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { Feature } from '../components'
 import { NavContainer } from '../containers/navbar'
+import { POSTS_ENDPOINT } from '../constants/api'
 
 export const Home = () => {
-  const { data, error, loading } = useFetch(
-    'http://localhost:9000/posts',
-    'posts'
-  )
+  const { data, error, loading } = useFetch(POSTS_ENDPOINT, 'posts')
 
   // Might be cool to display 3 most recent posts on the home page
   const numberOfPostsToDisplay = 3
