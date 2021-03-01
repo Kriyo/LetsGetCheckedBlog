@@ -6,11 +6,11 @@ export const NavBar = ({ background = true, children, ...props }) => {
   return background ? <Background {...props}>{children}</Background> : children
 }
 
-NavBar.Frame = function NavBarFrame({ children, ...props }) {
+NavBar.Frame = ({ children, ...props }) => {
   return <Container {...props}>{children}</Container>
 }
 
-NavBar.Link = function NavBarLink({ to, children, ...props }) {
+NavBar.Link = ({ to, children, ...props }) => {
   return (
     <NavLink href={to} {...props}>
       {children}
@@ -18,7 +18,7 @@ NavBar.Link = function NavBarLink({ to, children, ...props }) {
   )
 }
 
-NavBar.Logo = function NavBarLogo({ to, ...restProps }) {
+NavBar.Logo = ({ to, ...restProps }) => {
   return (
     <ReactRouterLink to={to}>
       <Logo {...restProps} />

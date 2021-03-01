@@ -2,23 +2,17 @@ import React from 'react'
 
 import { useFetch } from '../hooks/useFetch'
 import { Feature } from '../components'
-import { NavContainer } from '../containers/navbar'
+import { NavContainer, PostContainer } from '../containers'
 import { POSTS_ENDPOINT } from '../constants/api'
 
 export const Home = () => {
-  const { data, error, loading } = useFetch(POSTS_ENDPOINT, 'posts')
+  const { blogPosts, error, loading } = useFetch(POSTS_ENDPOINT, 'posts')
 
   // Might be cool to display 3 most recent posts on the home page
   const numberOfPostsToDisplay = 3
-  const displayData =
-    loading ||
-    data.slice(0, numberOfPostsToDisplay).map((post) => {
-      return (
-        <p key={`post-${post.id}`}>
-          {post.title} - {post.author} - {post.publish_date}
-        </p>
-      )
-    })
+  const tersePosts = loading || blogPosts.slice(0, numberOfPostsToDisplay)
+
+  // put in a UX improvement button to view all posts and route to /blog
 
   // API docs:
 
@@ -45,9 +39,9 @@ export const Home = () => {
             blanditiis praesentium
           </Feature.SubTitle>
         </Feature>
-        {error || null}
-        {displayData}
       </NavContainer>
+      {error || null}
+      {loading || <PostContainer blogPosts={tersePosts} />}
     </>
   )
 }

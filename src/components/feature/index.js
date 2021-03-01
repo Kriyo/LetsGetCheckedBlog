@@ -6,10 +6,10 @@ export const Feature = ({ children, ...props }) => {
   return <Container {...props}>{children}</Container>
 }
 
-Feature.Title = function FeatureTitle({ children, ...props }) {
+Feature.Title = ({ children, ...props }) => {
   return <Title {...props}>{children}</Title>
 }
 
-Feature.SubTitle = function FeatureSubTitle({ children, ...props }) {
+Feature.SubTitle = ({ children, ...props }) => {
   return <SubTitle {...props}>{children}</SubTitle>
 }
