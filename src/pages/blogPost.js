@@ -4,7 +4,9 @@ import { PostsContext } from '../context/posts'
 import { POSTS_ENDPOINT } from '../constants/api'
 import { sortByDate } from '../lib/sortByDate'
 
+import { Comment } from '../components'
 import { NavContainer, PostContainer } from '../containers'
+import avatar from '../default-avatar.png'
 
 // const handleReply = (e) => {
 //   console.log('::> handleReply invoked e: ', e)
@@ -15,10 +17,14 @@ const buildReplyComments = (parentComment, comments) => {
 
   content = comments.data.map((comment) => {
     return comment.parent_id === parentComment.id ? (
-      <p key={`comment=${comment.id}`}>
-        Response Comment: {comment.user} - {comment.date} ---- Parent:
-        {parentComment.user}
-      </p>
+      <Comment.NestedComment key={`comment=${comment.id}`}>
+        <Comment.Avatar src={avatar} />
+        <Comment.AuthorDetails>
+          Child Node: {comment.user} on {comment.date} responding to{' '}
+          {parentComment.user}
+        </Comment.AuthorDetails>
+        <Comment.Content>{comment.content}</Comment.Content>
+      </Comment.NestedComment>
     ) : null
   })
   return content
@@ -26,24 +32,31 @@ const buildReplyComments = (parentComment, comments) => {
 
 const buildRootComments = (comment) => {
   return !comment.parent_id ? (
-    <p key={`comment=${comment.id}`}>
-      Parent node: {comment.user} - {comment.date}
-    </p>
+    <Comment.RootComment>
+      <Comment.Avatar src={avatar} />
+      <Comment.AuthorDetails>
+        Parent Node: {comment.user} on {comment.date}
+      </Comment.AuthorDetails>
+      <Comment.Content>{comment.content}</Comment.Content>
+    </Comment.RootComment>
   ) : null
 }
 
-const buildBlogComments = (loading, comments) => {
-  let content = null
+const buildComments = (loading, comments) => {
+  let content
 
   if (!loading && comments) {
-    content = comments.data.map((comment) => {
-      return (
-        <div key={`comment=${comment.id}`}>
-          {buildRootComments(comment)}
-          {buildReplyComments(comment, comments)}
-        </div>
-      )
-    })
+    content = (
+      <Comment.Frame>
+        <Comment.Count>{comments.data.length} Comments</Comment.Count>
+        {comments.data.map((comment) => (
+          <Comment key={`comment-${comment.id}`}>
+            {buildRootComments(comment)}
+            {buildReplyComments(comment, comments)}
+          </Comment>
+        ))}
+      </Comment.Frame>
+    )
   }
   return content
 }
@@ -93,7 +106,7 @@ export const BlogPost = () => {
     <>
       <NavContainer />
       {buildBlogPost(loading, posts, currentBlogID)}
-      {buildBlogComments(loading, comments)}
+      {buildComments(loading, comments)}
     </>
   )
 }
