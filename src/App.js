@@ -1,22 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { Blog, Home } from './pages'
+import { Blog, BlogPost, Home, Contact, About } from './pages'
 import * as ROUTES from './constants/routes'
+import { POSTS_ENDPOINT } from './constants/api'
+import { PostsContext } from './context/posts'
+import { sortByDate } from './lib/sortByDate'
 
 export const App = () => {
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const fetchPosts = () => {
+    fetch(POSTS_ENDPOINT)
+      .then((response) => response.json())
+      .catch((error) => {
+        setPosts({ blog: null, error })
+        setLoading(false)
+      })
+      .then((response) => {
+        const reOrderByDate = sortByDate(response, 'posts')
+        setPosts({ blog: reOrderByDate, error: null })
+        setLoading(false)
+      })
+  }
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
+
   return (
     <Router>
-      <Route exact path={ROUTES.HOME}>
-        <Home />
-      </Route>
-      <Route exact path={ROUTES.BLOG}>
-        <Blog />
-      </Route>
+      <PostsContext.Provider value={{ loading, posts, setPosts }}>
+        <Route exact path={ROUTES.HOME}>
+          <Home />
+        </Route>
+        <Route exact path={ROUTES.BLOG}>
+          <Blog />
+        </Route>
+        <Route exact path={ROUTES.BLOGPOST}>
+          <BlogPost />
+        </Route>
+      </PostsContext.Provider>
+
       <Route exact path={ROUTES.ABOUT}>
-        <p>About page goes here</p>
+        <About />
       </Route>
       <Route exact path={ROUTES.CONTACT}>
-        <p>Contact page goes here</p>
+        <Contact />
       </Route>
     </Router>
   )

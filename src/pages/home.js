@@ -1,16 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-import { useFetch } from '../hooks/useFetch'
 import { Feature } from '../components'
 import { NavContainer, PostContainer } from '../containers'
-import { POSTS_ENDPOINT } from '../constants/api'
+import { PostsContext } from '../context/posts'
 
 export const Home = () => {
-  const { blogPosts, error, loading } = useFetch(POSTS_ENDPOINT, 'posts')
-
-  // Might be cool to display 3 most recent posts on the home page
+  const { loading, posts } = useContext(PostsContext)
   const numberOfPostsToDisplay = 3
-  const tersePosts = loading || blogPosts.slice(0, numberOfPostsToDisplay)
+  const tersePosts = loading || posts.blog.slice(0, numberOfPostsToDisplay)
 
   // put in a UX improvement button to view all posts and route to /blog
 
@@ -40,8 +37,8 @@ export const Home = () => {
           </Feature.SubTitle>
         </Feature>
       </NavContainer>
-      {error || null}
-      {loading || <PostContainer blogPosts={tersePosts} />}
+      {posts.error ? <p>Error loading posts: ${posts.error}</p> : null}
+      {loading ? <p>loading data</p> : <PostContainer posts={tersePosts} />}
     </>
   )
 }

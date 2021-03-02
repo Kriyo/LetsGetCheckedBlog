@@ -1,16 +1,21 @@
 import React from 'react'
 import { Post } from '../components'
 
-export const PostContainer = ({ blogPosts }) => {
+export const PostContainer = ({ posts, singlePost }) => {
   return (
     <Post.Frame>
-      {blogPosts.map((post) => (
+      {posts.map((post) => (
         <Post key={`post-${post.id}`}>
           <Post.Title>{post.title}</Post.Title>
-          <Post.Author>{post.author}</Post.Author>
-          <Post.PublishDate>{post.publish_date}</Post.PublishDate>
+          <Post.Author>
+            {post.author} - {post.publish_date}
+          </Post.Author>
           <Post.Description>{post.description}</Post.Description>
-          <Post.Content>{post.content}</Post.Content>
+          {singlePost ? (
+            <Post.Content dangerouslySetInnerHTML={{ __html: post.content }} />
+          ) : (
+            <Post.Link to={`/blog/${post.id}`}>Read Post</Post.Link>
+          )}
         </Post>
       ))}
     </Post.Frame>

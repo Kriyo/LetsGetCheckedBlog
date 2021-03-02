@@ -1,4 +1,5 @@
 export const HOME = '/'
 export const BLOG = '/blog'
+export const BLOGPOST = '/blog/:slug'
 export const ABOUT = '/about'
 export const CONTACT = '/contact'

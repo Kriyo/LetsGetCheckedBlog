@@ -6,8 +6,8 @@ import {
   Author,
   Title,
   Description,
-  PublishDate,
   Content,
+  Link,
 } from './styles/post'
 
 export const Post = ({ children, ...props }) => {
@@ -30,10 +30,14 @@ Post.Description = ({ children, ...props }) => {
   return <Description {...props}>{children}</Description>
 }
 
-Post.PublishDate = ({ children, ...props }) => {
-  return <PublishDate {...props}>{children}</PublishDate>
-}
-
 Post.Content = ({ children, ...props }) => {
   return <Content {...props}>{children}</Content>
+}
+
+Post.Link = ({ to, children, ...props }) => {
+  return (
+    <Link href={to} {...props}>
+      {children}
+    </Link>
+  )
 }

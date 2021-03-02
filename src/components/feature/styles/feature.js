@@ -6,7 +6,10 @@ export const Container = styled.div`
   flex-direction: column;
   border-bottom: 8px solid ${Primary[300]};
   text-align: center;
-  padding: 165px 45px;
+  padding: 355px 45px;
+  @media (max-width: 600px) {
+    padding: 165px 45px;
+  }
 `
 
 export const Title = styled.h1`

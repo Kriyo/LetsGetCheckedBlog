@@ -1,18 +1,15 @@
-import React from 'react'
-
-import { useFetch } from '../hooks/useFetch'
+import React, { useContext } from 'react'
 import { NavContainer, PostContainer } from '../containers'
-import {} from '../containers/post'
-import { POSTS_ENDPOINT } from '../constants/api'
+import { PostsContext } from '../context/posts'
 
 export const Blog = () => {
-  const { blogPosts, error, loading } = useFetch(POSTS_ENDPOINT, 'posts')
+  const { loading, posts } = useContext(PostsContext)
 
   return (
     <>
       <NavContainer />
-      {error || null}
-      {loading || <PostContainer blogPosts={blogPosts} />}
+      {posts.error ? <p>Error loading posts: ${posts.error}</p> : null}
+      {loading ? <p>loading data</p> : <PostContainer posts={posts.blog} />}
     </>
   )
 }
