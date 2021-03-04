@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { Neutral } from '../../../utils/colors'
+import { Neutral, Primary } from '../../../utils/colors'
 
 export const Background = styled.div`
   display: flex;
@@ -15,15 +15,12 @@ export const Background = styled.div`
 
 export const Container = styled.nav`
   display: flex;
-  margin: 0 56px;
   height: 100px;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  background: ${Primary[100]};
   a {
     display: flex;
-  }
-  @media (max-width: 1000px) {
-    margin: 0 30px;
   }
 `
 

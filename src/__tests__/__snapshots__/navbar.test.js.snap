@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBar /> renders the <Navbar /> with a background 1`] = `
+<div
+  class="navbar__Background-sc-1waf4cx-0 fkfKQq"
+  data-testid="nav-bg"
+>
+  <nav
+    class="navbar__Container-sc-1waf4cx-1 iTnWlJ"
+  >
+    <a
+      href="/"
+    >
+      <img
+        alt="Blog Logo"
+        class="navbar__Logo-sc-1waf4cx-3 dKtmPt"
+        src="/logo.svg"
+      />
+    </a>
+    <a
+      alt="a link"
+      class="navbar__NavLink-sc-1waf4cx-2 nBHVE"
+      href="/link"
+    >
+      I am a link
+    </a>
+  </nav>
+</div>
+`;
+
+exports[`<NavBar /> renders the <Navbar /> without a background 1`] = `
+<nav
+  class="navbar__Container-sc-1waf4cx-1 iTnWlJ"
+>
+  <a
+    href="/"
+  >
+    <img
+      alt="Blog Logo"
+      class="navbar__Logo-sc-1waf4cx-3 dKtmPt"
+      src="/logo.svg"
+    />
+  </a>
+  <a
+    alt="a link"
+    class="navbar__NavLink-sc-1waf4cx-2 nBHVE"
+    href="/link"
+  >
+    I am another link
+  </a>
+</nav>
+`;

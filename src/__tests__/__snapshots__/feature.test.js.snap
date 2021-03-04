@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Feature /> renders the <Feature /> with populated data 1`] = `
+<div
+  class="feature__Container-uyg3os-0 kriDBt"
+>
+  <h1
+    class="feature__Title-uyg3os-1 gDAVhI"
+  >
+    Simple Blog
+  </h1>
+  <h2
+    class="feature__SubTitle-uyg3os-2 juyoCa"
+  >
+    At vero eos et accusamus et iusto odio
+  </h2>
+</div>
+`;

@@ -3,7 +3,13 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { Background, Container, NavLink, Logo } from './styles/navbar'
 
 export const NavBar = ({ background = true, children, ...props }) => {
-  return background ? <Background {...props}>{children}</Background> : children
+  return background ? (
+    <Background {...props} data-testid="nav-bg">
+      {children}
+    </Background>
+  ) : (
+    children
+  )
 }
 
 NavBar.Frame = ({ children, ...props }) => {
