@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-// import { Primary } from '../../../utils/colors'
+import { Neutral, Primary } from '../../../utils/colors'
 
 export const Container = styled.div`
   display: flex;
@@ -58,7 +58,9 @@ export const Image = styled.img`
   height: 50px;
 `
 
-export const Content = styled.p``
+export const Content = styled.p`
+  color: ${Neutral[400]};
+`
 
 export const ReplyHeading = styled.h3``
 
@@ -81,15 +83,10 @@ export const ButtonWrapper = styled.div`
 export const Button = styled.button`
   height: 35px;
   width: 80px;
-`
-
-export const Input = styled.input`
   padding: 8px 12px;
-  width: 185px;
-  margin: 10px 0;
-  background: #fff;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
+  background: ${Neutral[100]};
+  border: 1px solid ${Primary[200]};
+  border-top: 1px solid ${Primary[100]};
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -97,11 +94,36 @@ export const Input = styled.input`
   -webkit-border-radius: 1px;
   border-radius: 1px;
   font-size: 0.9rem;
-  color: #404040;
+  color: ${Neutral[300]};
+  &:hover {
+    background: ${Primary[100]};
+    color: ${Neutral[100]};
+  }
+`
+
+export const Input = styled.input`
+  padding: 8px 12px;
+  width: 185px;
+  margin: 10px 0;
+  background: ${Neutral[100]};
+  border: 1px solid ${Primary[200]};
+  border-top: 1px solid ${Primary[100]};
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  font-size: 0.9rem;
+  color: ${Neutral[300]};
   outline: none;
 
   &[type='submit'] {
     cursor: pointer;
+    &:hover {
+      background: ${Primary[100]};
+      color: ${Neutral[100]};
+    }
   }
   @media (max-width: 600px) {
     width: 100%;
@@ -114,9 +136,9 @@ export const TextArea = styled.textarea`
   height: 150px;
   width: 500px;
   margin: 10px 0;
-  background: #fff;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
+  background: ${Neutral[100]};
+  border: 1px solid ${Primary[200]};
+  border-top: 1px solid ${Primary[100]};
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -124,7 +146,7 @@ export const TextArea = styled.textarea`
   -webkit-border-radius: 1px;
   border-radius: 1px;
   font-size: 0.9rem;
-  color: #404040;
+  color: ${Neutral[300]};
   outline: none;
 
   @media (max-width: 600px) {

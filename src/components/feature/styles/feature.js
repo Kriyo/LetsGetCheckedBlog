@@ -4,7 +4,7 @@ import { Primary } from '../../../utils/colors'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  border-bottom: 8px solid ${Primary[300]};
+  border-bottom: 8px solid ${Primary[100]};
   text-align: center;
   padding: 355px 45px;
   @media (max-width: 600px) {

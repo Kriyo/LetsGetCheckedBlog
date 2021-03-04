@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     -moz-osz-font-smoothing: grayscale;
     margin: 0px;
     background-color: white;
-    color: ${Neutral[200]};
+    color: ${Neutral[300]};
     font-size: 16px;
   }
   h1, h2, h3, h4 {

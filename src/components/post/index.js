@@ -1,10 +1,12 @@
 import React from 'react'
-
+import { Link as ReactRouterLink } from 'react-router-dom'
 import {
   Container,
   Item,
+  Image,
   Author,
   Title,
+  Details,
   Description,
   Content,
   Link,
@@ -16,6 +18,18 @@ export const Post = ({ children, ...props }) => {
 
 Post.Frame = ({ children, ...props }) => {
   return <Container {...props}>{children}</Container>
+}
+
+Post.Image = ({ to, ...props }) => {
+  return (
+    <ReactRouterLink to={to}>
+      <Image {...props} />
+    </ReactRouterLink>
+  )
+}
+
+Post.Details = ({ children, ...props }) => {
+  return <Details {...props}>{children}</Details>
 }
 
 Post.Author = ({ children, ...props }) => {
