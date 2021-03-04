@@ -20,11 +20,12 @@ import avatar from '../default-avatar.png'
 */
 
 export const BlogPost = () => {
+  const initialReplyState = { isReplying: false, target: null }
   const { loading, posts } = useContext(PostsContext)
   const { pathname } = useLocation()
   const [comments, setComments] = useState(null)
   const [errors, setErrors] = useState(null)
-  const [reply, setReply] = useState({ isReplying: false, target: null })
+  const [reply, setReply] = useState(initialReplyState)
   const [username, setUserName] = useState('')
   const [userComment, setUserComment] = useState('')
 
@@ -73,6 +74,9 @@ export const BlogPost = () => {
     createComment(payload)
       .then(() => {
         fetchComments()
+        setReply(initialReplyState)
+        setUserName('')
+        setUserComment('')
       })
       .catch((error) => {
         setErrors(error)
@@ -161,9 +165,7 @@ export const BlogPost = () => {
           {reply.isReplying ? (
             <Comment.Content>
               Reply to {reply.target.user}
-              <Comment.Button
-                onClick={() => setReply({ isReplying: false, target: null })}
-              >
+              <Comment.Button onClick={() => setReply(initialReplyState)}>
                 Cancel
               </Comment.Button>
             </Comment.Content>

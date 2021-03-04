@@ -11,6 +11,12 @@ export const Item = styled.div`
   width: 25%;
   padding: 50px;
   background: ${Neutral[100]};
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em ${Neutral[300]};
+    transform: translateY(-20px);
+  }
 
   @media (max-width: 1000px) {
     padding: 0;
@@ -80,6 +86,10 @@ export const Link = styled.a`
   color: ${Neutral[400]};
   text-decoration: none;
   font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
 // Maybe use unsplash to put some assets in

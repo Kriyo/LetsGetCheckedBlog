@@ -23,7 +23,7 @@ export const PostContainer = ({ posts, singlePost }) => {
           {singlePost ? (
             <Post.Content dangerouslySetInnerHTML={{ __html: post.content }} />
           ) : (
-            <Post.Link to={`/blog/${post.id}`}>Read Post</Post.Link>
+            <Post.Link to={`/blog/${post.id}`}>Read More</Post.Link>
           )}
         </Post>
       ))}

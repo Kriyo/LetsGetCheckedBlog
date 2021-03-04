@@ -60,6 +60,8 @@ export const Image = styled.img`
 
 export const Content = styled.p`
   color: ${Neutral[400]};
+  display: flex;
+  justify-content: space-between;
 `
 
 export const ReplyHeading = styled.h3``
