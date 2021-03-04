@@ -1,18 +1,6 @@
 import styled from 'styled-components/macro'
 import { Neutral } from '../../../utils/colors'
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  background: ${Neutral[200]};
-
-  @media (max-width: 1000px) {
-    flex-direction: column;
-  }
-`
-
 export const Item = styled.div`
   display: flex;
   align-items: center;
@@ -25,9 +13,24 @@ export const Item = styled.div`
   background: ${Neutral[100]};
 
   @media (max-width: 1000px) {
-    margin: auto;
     padding: 0;
     width: 100%;
+    margin: 25px 0;
+  }
+`
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background: ${Neutral[200]};
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+
+    ${Item}:first-of-type {
+      margin-top: 0px;
+    }
   }
 `
 
@@ -50,6 +53,9 @@ export const Title = styled.h2`
 
 export const Description = styled.h3`
   margin-top: 0;
+  @media (max-width: 600px) {
+    padding: 0 15px;
+  }
 `
 
 export const Author = styled.p`
