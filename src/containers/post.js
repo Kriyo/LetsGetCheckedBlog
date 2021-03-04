@@ -2,7 +2,7 @@ import React from 'react'
 import { Post } from '../components'
 
 export const PostContainer = ({ posts, singlePost }) => {
-  return (
+  return posts ? (
     <Post.Frame>
       {posts.map((post) => (
         <Post key={`post-${post.id}`}>
@@ -28,5 +28,5 @@ export const PostContainer = ({ posts, singlePost }) => {
         </Post>
       ))}
     </Post.Frame>
-  )
+  ) : null
 }

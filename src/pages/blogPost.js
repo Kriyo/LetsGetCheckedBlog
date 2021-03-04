@@ -24,7 +24,8 @@ export const BlogPost = () => {
   const { loading, posts } = useContext(PostsContext)
   const { pathname } = useLocation()
   const [comments, setComments] = useState(null)
-  const [errors, setErrors] = useState(null)
+  const [loadingComments, setLoadingComments] = useState(true)
+  const [replyError, setReplyErrors] = useState(null)
   const [reply, setReply] = useState(initialReplyState)
   const [username, setUserName] = useState('')
   const [userComment, setUserComment] = useState('')
@@ -41,7 +42,10 @@ export const BlogPost = () => {
         setComments({ data: null, error })
       })
       .then((response) => {
-        setComments({ data: response, error: null })
+        if (response) {
+          setComments({ data: response, error: null })
+        }
+        setLoadingComments(false)
       })
   }, [commentsEndPoint, setComments])
 
@@ -79,7 +83,7 @@ export const BlogPost = () => {
         setUserComment('')
       })
       .catch((error) => {
-        setErrors(error)
+        setReplyErrors(error)
       })
   }
 
@@ -98,7 +102,15 @@ export const BlogPost = () => {
   const buildBlogPost = () => {
     let content = null
 
-    if (!loading && posts) {
+    if (loading) {
+      content = <p>loading data</p>
+    }
+
+    if (posts.error) {
+      content = <p>Error loading blog posts</p>
+    }
+
+    if (!posts?.error && !loading) {
       const { blog } = posts
       const currentBlog = blog.find((post) => post.id === Number(currentBlogID))
 
@@ -148,54 +160,65 @@ export const BlogPost = () => {
   }
 
   const buildComments = () => {
-    return !loading && comments ? (
-      <Comment.Frame>
-        <Comment.Count>{comments.data.length} Comments</Comment.Count>
-        <Comment.Section>
-          {comments.data.map((comment) => (
-            <Comment key={`comment-${comment.id}`}>
-              {buildRootComments(comment)}
-              {buildReplyComments(comment, comments)}
-            </Comment>
-          ))}
-        </Comment.Section>
-        <Comment.Form onSubmit={handleSubmit}>
-          <Comment.ReplyHeading>Submit A Comment</Comment.ReplyHeading>
+    let content
 
-          {reply.isReplying ? (
-            <Comment.Content>
-              Reply to {reply.target.user}
-              <Comment.Button onClick={() => setReply(initialReplyState)}>
-                Cancel
-              </Comment.Button>
-            </Comment.Content>
-          ) : null}
-          <Comment.UserInput
-            type="text"
-            placeholder="Your Name"
-            value={username}
-            onChange={(e) => handleChange('username', e)}
-          />
-          <Comment.TextArea
-            placeholder="Your Comment"
-            value={userComment}
-            onChange={(e) => handleChange('comment', e)}
-          />
-          <Comment.UserInput type="submit" value="Submit" />
-        </Comment.Form>
-      </Comment.Frame>
-    ) : null
+    if (loadingComments) {
+      content = <p>loading comments...</p>
+    }
+
+    if (comments?.error) {
+      content = <p>Error loading comments</p>
+    }
+
+    if (!comments?.errors && !loadingComments && comments.data) {
+      content = (
+        <Comment.Frame>
+          <Comment.Count>{comments.data.length} Comments</Comment.Count>
+          <Comment.Section>
+            {comments.data.map((comment) => (
+              <Comment key={`comment-${comment.id}`}>
+                {buildRootComments(comment)}
+                {buildReplyComments(comment, comments)}
+              </Comment>
+            ))}
+          </Comment.Section>
+          <Comment.Form onSubmit={handleSubmit}>
+            <Comment.ReplyHeading>Submit A Comment</Comment.ReplyHeading>
+            {replyError ? (
+              <p>There was an error creating your comment</p>
+            ) : null}
+            {reply.isReplying ? (
+              <Comment.Content>
+                Reply to {reply.target.user}
+                <Comment.Button onClick={() => setReply(initialReplyState)}>
+                  Cancel
+                </Comment.Button>
+              </Comment.Content>
+            ) : null}
+            <Comment.UserInput
+              type="text"
+              placeholder="Your Name"
+              value={username}
+              onChange={(e) => handleChange('username', e)}
+            />
+            <Comment.TextArea
+              placeholder="Your Comment"
+              value={userComment}
+              onChange={(e) => handleChange('comment', e)}
+            />
+            <Comment.UserInput type="submit" value="Submit" />
+          </Comment.Form>
+        </Comment.Frame>
+      )
+    }
+    return content
   }
 
   return (
     <>
       <NavContainer />
       {buildBlogPost(loading, posts, currentBlogID)}
-      {errors ? (
-        <p>There was an error retrieving comments</p>
-      ) : (
-        buildComments(loading, comments)
-      )}
+      {buildComments(loading, comments)}
     </>
   )
 }

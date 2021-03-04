@@ -5,11 +5,27 @@ import { PostsContext } from '../context/posts'
 export const Blog = () => {
   const { loading, posts } = useContext(PostsContext)
 
+  const buildContent = () => {
+    let content
+
+    if (loading) {
+      content = <p>loading data</p>
+    }
+
+    if (posts.error) {
+      content = <p>Error loading blog posts</p>
+    }
+
+    if (!posts?.error && !loading) {
+      content = <PostContainer posts={posts.blog} />
+    }
+    return content
+  }
+
   return (
     <>
       <NavContainer />
-      {posts.error ? <p>Error loading posts: ${posts.error}</p> : null}
-      {loading ? <p>loading data</p> : <PostContainer posts={posts.blog} />}
+      {buildContent()}
     </>
   )
 }

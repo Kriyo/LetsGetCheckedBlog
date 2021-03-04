@@ -15,11 +15,12 @@ export const App = () => {
       .then((response) => response.json())
       .catch((error) => {
         setPosts({ blog: null, error })
-        setLoading(false)
       })
       .then((response) => {
-        const reOrderByDate = sortByDate(response, 'posts')
-        setPosts({ blog: reOrderByDate, error: null })
+        if (response) {
+          const reOrderByDate = sortByDate(response, 'posts')
+          setPosts({ blog: reOrderByDate, error: null })
+        }
         setLoading(false)
       })
   }

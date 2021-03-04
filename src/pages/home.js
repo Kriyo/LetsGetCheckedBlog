@@ -7,24 +7,24 @@ import { PostsContext } from '../context/posts'
 export const Home = () => {
   const { loading, posts } = useContext(PostsContext)
   const numberOfPostsToDisplay = 3
-  const tersePosts = loading || posts.blog.slice(0, numberOfPostsToDisplay)
 
-  // put in a UX improvement button to view all posts and route to /blog
+  const buildContent = () => {
+    let content
 
-  // API docs:
+    if (loading) {
+      content = <p>loading data</p>
+    }
 
-  // Top 3 on Home and All on /Blog routes
-  // GET /posts List all blog posts
+    if (posts.error) {
+      content = <p>Error loading blog posts</p>
+    }
 
-  // Use on Blog/id route
-  // GET /posts/{id} View single blog post
-  // GET /posts/{id}/comments List all comments for single blog post
-
-  // Add a comment
-  // POST /posts/{id}/comments Add comment to single blog post
-
-  // Update a comment
-  // PUT /comments/{id} Update single comment
+    if (!posts?.error && !loading) {
+      const tersePosts = posts.blog.slice(0, numberOfPostsToDisplay)
+      content = <PostContainer posts={tersePosts} />
+    }
+    return content
+  }
 
   return (
     <>
@@ -37,8 +37,7 @@ export const Home = () => {
           </Feature.SubTitle>
         </Feature>
       </NavContainer>
-      {posts.error ? <p>Error loading posts: ${posts.error}</p> : null}
-      {loading ? <p>loading data</p> : <PostContainer posts={tersePosts} />}
+      {buildContent()}
     </>
   )
 }
