@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { Feature } from '../components/feature'
+import { Feature } from '../../components/feature'
 
 describe('<Feature />', () => {
   it('renders the <Feature /> with populated data', () => {

@@ -9,11 +9,11 @@ export const Blog = () => {
     let content
 
     if (loading) {
-      content = <p>loading data</p>
+      content = <p>Loading all Blog posts</p>
     }
 
     if (posts.error) {
-      content = <p>Error loading blog posts</p>
+      content = <p>Error loading all Blog posts</p>
     }
 
     if (!posts?.error && !loading) {

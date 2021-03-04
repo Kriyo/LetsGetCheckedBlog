@@ -10,3 +10,7 @@ export const Neutral = {
   400: '#022B3A',
   500: '#000000',
 }
+
+export const Error = {
+  100: '#cf0000',
+}

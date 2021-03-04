@@ -11,7 +11,7 @@ export const App = () => {
   const [loading, setLoading] = useState(true)
 
   const fetchPosts = () => {
-    fetch(POSTS_ENDPOINT)
+    return fetch(POSTS_ENDPOINT)
       .then((response) => response.json())
       .catch((error) => {
         setPosts({ blog: null, error })

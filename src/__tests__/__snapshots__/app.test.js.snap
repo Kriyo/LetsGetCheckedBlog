@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the <App/> 1`] = `
+<div
+  class="navbar__Background-sc-1waf4cx-0 fkfKQq"
+  data-testid="nav-bg"
+>
+  <nav
+    class="navbar__Container-sc-1waf4cx-1 iTnWlJ"
+  >
+    <a
+      href="/"
+    >
+      <img
+        alt="Lets Get Checked Blog Logo"
+        class="navbar__Logo-sc-1waf4cx-3 dKtmPt"
+        src="white-logo.png"
+      />
+    </a>
+    <a
+      alt="Go to Home page"
+      class="navbar__NavLink-sc-1waf4cx-2 nBHVE"
+      href="/"
+    >
+      Home
+    </a>
+    <a
+      alt="Go to Blog page"
+      class="navbar__NavLink-sc-1waf4cx-2 nBHVE"
+      href="/blog"
+    >
+      Blog
+    </a>
+    <a
+      alt="Go to Contact page"
+      class="navbar__NavLink-sc-1waf4cx-2 nBHVE"
+      href="/contact"
+    >
+      Contact
+    </a>
+    <a
+      alt="Go to About page"
+      class="navbar__NavLink-sc-1waf4cx-2 nBHVE"
+      href="/about"
+    >
+      About
+    </a>
+  </nav>
+  <div
+    class="feature__Container-uyg3os-0 kriDBt"
+  >
+    <h1
+      class="feature__Title-uyg3os-1 gDAVhI"
+    >
+      Simple Blog
+    </h1>
+    <h2
+      class="feature__SubTitle-uyg3os-2 juyoCa"
+    >
+      At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+    </h2>
+  </div>
+</div>
+`;

@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { Neutral, Primary } from '../../../utils/colors'
+import { Error, Neutral, Primary } from '../../../utils/colors'
 
 export const Container = styled.div`
   display: flex;
@@ -102,6 +102,11 @@ export const Button = styled.button`
     color: ${Neutral[100]};
   }
 `
+export const ErrorLabel = styled.label`
+  color: ${Error[100]};
+  font-size: 0.8em;
+  font-weight: bold;
+`
 
 export const Input = styled.input`
   padding: 8px 12px;
@@ -122,6 +127,11 @@ export const Input = styled.input`
 
   &[type='submit'] {
     cursor: pointer;
+    &:disabled,
+    &:disabled:hover {
+      background: ${Neutral[300]};
+      color: ${Neutral[100]};
+    }
     &:hover {
       background: ${Primary[100]};
       color: ${Neutral[100]};

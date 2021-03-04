@@ -20,7 +20,7 @@ exports[`<NavBar /> renders the <Navbar /> with a background 1`] = `
     <a
       alt="a link"
       class="navbar__NavLink-sc-1waf4cx-2 nBHVE"
-      href="/link"
+      href="/blog"
     >
       I am a link
     </a>
@@ -44,7 +44,7 @@ exports[`<NavBar /> renders the <Navbar /> without a background 1`] = `
   <a
     alt="a link"
     class="navbar__NavLink-sc-1waf4cx-2 nBHVE"
-    href="/link"
+    href="/blog"
   >
     I am another link
   </a>

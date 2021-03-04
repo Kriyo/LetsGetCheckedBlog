@@ -49,7 +49,15 @@ export const BlogPost = () => {
       })
   }, [commentsEndPoint, setComments])
 
-  const createComment = async (payload) => {
+  const createComment = async () => {
+    const payload = {
+      postId: currentBlogID,
+      parent_id: reply?.target?.id || null,
+      user: username,
+      date: new Date().toISOString().split('T')[0],
+      content: userComment,
+    }
+
     const response = await fetch(commentsEndPoint, {
       method: 'POST',
       mode: 'cors',
@@ -67,15 +75,7 @@ export const BlogPost = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const payload = {
-      postId: currentBlogID,
-      parent_id: reply?.target?.id || null,
-      user: username,
-      date: new Date().toISOString().split('T')[0],
-      content: userComment,
-    }
-
-    createComment(payload)
+    createComment()
       .then(() => {
         fetchComments()
         setReply(initialReplyState)
@@ -86,12 +86,18 @@ export const BlogPost = () => {
         setReplyErrors(error)
       })
   }
+  const validate = () => {
+    return !username || !userComment
+  }
 
-  // Still need to add validation
   const handleChange = (type, e) => {
-    return type === 'username'
-      ? setUserName(e.target.value)
-      : setUserComment(e.target.value)
+    const { value } = e.target
+
+    if (type === 'username') {
+      setUserName(value)
+    } else {
+      setUserComment(value)
+    }
   }
 
   // User clicked reply on an existing comment
@@ -103,11 +109,11 @@ export const BlogPost = () => {
     let content = null
 
     if (loading) {
-      content = <p>loading data</p>
+      content = <p>Loading Blog Post</p>
     }
 
     if (posts.error) {
-      content = <p>Error loading blog posts</p>
+      content = <p>Error Loading Blog Post</p>
     }
 
     if (!posts?.error && !loading) {
@@ -161,9 +167,11 @@ export const BlogPost = () => {
 
   const buildComments = () => {
     let content
+    const usernameError = !username ? 'Username is too short' : ''
+    const userCommentError = !userComment ? 'Comment is too short' : ''
 
     if (loadingComments) {
-      content = <p>loading comments...</p>
+      content = <p>Loading comments...</p>
     }
 
     if (comments?.error) {
@@ -197,16 +205,32 @@ export const BlogPost = () => {
             ) : null}
             <Comment.UserInput
               type="text"
+              id="username"
               placeholder="Your Name"
               value={username}
               onChange={(e) => handleChange('username', e)}
             />
+            {!username ? (
+              <Comment.ErrorLabel htmlFor="username">
+                {usernameError}
+              </Comment.ErrorLabel>
+            ) : null}
             <Comment.TextArea
+              id="usercomment"
               placeholder="Your Comment"
               value={userComment}
               onChange={(e) => handleChange('comment', e)}
             />
-            <Comment.UserInput type="submit" value="Submit" />
+            {!userComment ? (
+              <Comment.ErrorLabel htmlFor="usercomment">
+                {userCommentError}
+              </Comment.ErrorLabel>
+            ) : null}
+            <Comment.UserInput
+              disabled={validate()}
+              type="submit"
+              value="Submit"
+            />
           </Comment.Form>
         </Comment.Frame>
       )

@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Comment /> renders the <Comment /> with populated data 1`] = `
+<div
+  class="comment__Container-sc-1vl0att-0 eSWrdR"
+>
+  <h2
+    class="comment__Count-sc-1vl0att-4 dBntRH"
+  >
+    5 Comments
+  </h2>
+  <div
+    class="comment__Section-sc-1vl0att-5"
+  >
+    <div
+      class="comment__Item-sc-1vl0att-1"
+    >
+      <div
+        class="comment__RootItem-sc-1vl0att-2 efLBJg"
+      >
+        <img
+          class="comment__Image-sc-1vl0att-8 bpzdjn"
+          src="default-avatar.png"
+        />
+        <div
+          class="comment__DetailsWrapper-sc-1vl0att-6 kprSpY"
+        >
+          <h4
+            class="comment__AuthorDetails-sc-1vl0att-7 FPVPu"
+          >
+            Chris on 2021-03-03
+          </h4>
+          <p
+            class="comment__Content-sc-1vl0att-9 dYpyMh"
+          >
+            Ius ad verear tincidunt scriptorem
+          </p>
+        </div>
+        <div
+          class="comment__ButtonWrapper-sc-1vl0att-12 iuyUmH"
+        >
+          <button
+            class="comment__Button-sc-1vl0att-13 bYslNS"
+          >
+            Reply
+          </button>
+        </div>
+      </div>
+      <div
+        class="comment__NestedItem-sc-1vl0att-3 dgizcD"
+      >
+        <img
+          class="comment__Image-sc-1vl0att-8 bpzdjn"
+          src="default-avatar.png"
+        />
+        <div
+          class="comment__DetailsWrapper-sc-1vl0att-6 kprSpY"
+        >
+          <h4
+            class="comment__AuthorDetails-sc-1vl0att-7 FPVPu"
+          >
+            Jason response to Chris on 2021-03-04
+          </h4>
+          <p
+            class="comment__Content-sc-1vl0att-9 dYpyMh"
+          >
+            Purto tamquam labores has ex.
+          </p>
+        </div>
+        <div
+          class="comment__ButtonWrapper-sc-1vl0att-12 iuyUmH"
+        >
+          <button
+            class="comment__Button-sc-1vl0att-13 bYslNS"
+          >
+            Reply
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form
+    class="comment__Form-sc-1vl0att-11 fBrpNf"
+  >
+    <h3
+      class="comment__ReplyHeading-sc-1vl0att-10"
+    >
+      Submit A Comment
+    </h3>
+    <p
+      class="comment__Content-sc-1vl0att-9 dYpyMh"
+    >
+      Reply to Chris
+      <button
+        class="comment__Button-sc-1vl0att-13 bYslNS"
+      >
+        Cancel
+      </button>
+    </p>
+    <input
+      class="comment__Input-sc-1vl0att-15 dbQFyA"
+      id="username"
+      placeholder="Your Name"
+      type="text"
+      value=""
+    />
+    <label
+      class="comment__ErrorLabel-sc-1vl0att-14 Ldqhp"
+      for="username"
+    >
+      Username is too short
+    </label>
+    <textarea
+      class="comment__TextArea-sc-1vl0att-16 czCmQW"
+      id="usercomment"
+      placeholder="Your Comment"
+    />
+    <label
+      class="comment__ErrorLabel-sc-1vl0att-14 Ldqhp"
+      for="usercomment"
+    >
+      Comment is too short
+    </label>
+    <input
+      class="comment__Input-sc-1vl0att-15 dbQFyA"
+      disabled=""
+      type="submit"
+      value="Submit"
+    />
+  </form>
+</div>
+`;

@@ -8,10 +8,10 @@ export const About = () => {
     <>
       <NavContainer>
         <Feature>
-          <Feature.Title>About</Feature.Title>
+          <Feature.Title>About Me</Feature.Title>
           <Feature.SubTitle>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui
-            blanditiis praesentium
+            Et harum quidem rerum facilis est et expedita distinctio. Nam
+            liberotempore.
           </Feature.SubTitle>
         </Feature>
       </NavContainer>

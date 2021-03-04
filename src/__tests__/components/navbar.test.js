@@ -1,9 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { NavBar } from '../components/navbar'
-
-// jest.mock('react-router-dom')
+import { BrowserRouter as Router } from 'react-router-dom'
+import { NavBar } from '../../components/navbar'
+import { HOME, BLOG } from '../../constants/routes'
 
 describe('<NavBar />', () => {
   it('renders the <Navbar /> with a background', () => {
@@ -11,8 +10,8 @@ describe('<NavBar />', () => {
       <Router>
         <NavBar>
           <NavBar.Frame>
-            <NavBar.Logo to="/" src="/logo.svg" alt="Blog Logo" />
-            <NavBar.Link alt="a link" to="/link">
+            <NavBar.Logo to={HOME} src="/logo.svg" alt="Blog Logo" />
+            <NavBar.Link alt="a link" to={BLOG}>
               I am a link
             </NavBar.Link>
           </NavBar.Frame>
@@ -30,8 +29,8 @@ describe('<NavBar />', () => {
       <Router>
         <NavBar background={false}>
           <NavBar.Frame>
-            <NavBar.Logo to="/" src="/logo.svg" alt="Blog Logo" />
-            <NavBar.Link to="/link" alt="a link">
+            <NavBar.Logo to={HOME} src="/logo.svg" alt="Blog Logo" />
+            <NavBar.Link to={BLOG} alt="a link">
               I am another link
             </NavBar.Link>
           </NavBar.Frame>

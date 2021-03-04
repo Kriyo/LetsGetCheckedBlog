@@ -14,6 +14,7 @@ import {
   Form,
   Button,
   ButtonWrapper,
+  ErrorLabel,
   Input,
   TextArea,
   Section,
@@ -74,7 +75,9 @@ Comment.ButtonWrapper = ({ children, ...props }) => {
 Comment.Button = ({ children, ...props }) => {
   return <Button {...props}>{children}</Button>
 }
-
+Comment.ErrorLabel = ({ children, ...props }) => {
+  return <ErrorLabel {...props}>{children}</ErrorLabel>
+}
 Comment.UserInput = ({ children, ...props }) => {
   return <Input {...props}>{children}</Input>
 }
