@@ -7,11 +7,16 @@ import {
   NestedItem,
   Count,
   Image,
+  DetailsWrapper,
   Content,
   AuthorDetails,
-  Subtitle,
+  ReplyHeading,
+  Form,
   Button,
+  ButtonWrapper,
+  Input,
   TextArea,
+  Section,
 } from './styles/comment'
 
 export const Comment = ({ children, ...props }) => {
@@ -20,6 +25,10 @@ export const Comment = ({ children, ...props }) => {
 
 Comment.Frame = ({ children, ...props }) => {
   return <Container {...props}>{children}</Container>
+}
+
+Comment.Section = ({ children, ...props }) => {
+  return <Section {...props}>{children}</Section>
 }
 
 Comment.RootComment = ({ children, ...props }) => {
@@ -34,6 +43,10 @@ Comment.Count = ({ children, ...props }) => {
   return <Count {...props}>{children}</Count>
 }
 
+Comment.DetailsWrapper = ({ children, ...props }) => {
+  return <DetailsWrapper {...props}>{children}</DetailsWrapper>
+}
+
 Comment.AuthorDetails = ({ children, ...props }) => {
   return <AuthorDetails {...props}>{children}</AuthorDetails>
 }
@@ -46,12 +59,24 @@ Comment.Content = ({ children, ...props }) => {
   return <Content {...props}>{children}</Content>
 }
 
-Comment.Subtitle = ({ children, ...props }) => {
-  return <Subtitle {...props}>{children}</Subtitle>
+Comment.ReplyHeading = ({ children, ...props }) => {
+  return <ReplyHeading {...props}>{children}</ReplyHeading>
+}
+
+Comment.Form = ({ children, ...props }) => {
+  return <Form {...props}>{children}</Form>
+}
+
+Comment.ButtonWrapper = ({ children, ...props }) => {
+  return <ButtonWrapper {...props}>{children}</ButtonWrapper>
 }
 
 Comment.Button = ({ children, ...props }) => {
   return <Button {...props}>{children}</Button>
+}
+
+Comment.UserInput = ({ children, ...props }) => {
+  return <Input {...props}>{children}</Input>
 }
 
 Comment.TextArea = ({ children, ...props }) => {
